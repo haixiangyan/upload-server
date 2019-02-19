@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 
 app.options('/upload', cors())
 app.post('/upload', cors(), upload.single('file'), function (req, res, next) {
-  res.json({key: req.file.filename})
+  res.json(req.file)
 })
 app.get('/preview/:key', cors(), function(req, res, next){
   res.sendFile(`uploads/${req.params.key}`, {
